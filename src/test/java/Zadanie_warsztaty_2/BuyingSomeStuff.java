@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.channels.SelectableChannel;
+import java.time.LocalDate;
 
 
 public class BuyingSomeStuff {
@@ -128,8 +129,9 @@ public class BuyingSomeStuff {
 
     @Then("^Printscreen of order confirmation is done$")
     public void printscreenOfOrderConfirmationIsDone() throws IOException {
+        String date = LocalDate.now().toString();
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
-        FileUtils.copyFile(scrFile, new File("/home/piotr/Pictures/screenshot-1.png"));
+        FileUtils.copyFile(scrFile, new File("/home/piotr/Pictures/screenshot-1" + date + ".png"));
     }
 }
